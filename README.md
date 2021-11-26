@@ -1,43 +1,41 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Blog App - Rails Project
+# Blog app Project
 
-> This is a Rails initial project.
+> In this project, i create all controllers and views for your Blog app and add simple placeholders for your views with plain HTML.
 
-![screenshot](./app_screenshot.png)
-
-This project is meant to be a full blog app and it's goal is to teach students about how the whole structure of Ruby on Rails work.
 
 ## Built With
 
 - Ruby
 - Ruby on Rails
-- Git & Github
-- Gems
+- SQL
 - VScode
+- Git & GitHub
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+- Open your command line
 
-### Setup
+- Go to the directory where you want this project to be cloned into
 
-### Install
+- Run this command:
+  `git clone https://github.com/tiagorahal/blog-app`
 
-### Usage
+- cd into the directory
 
-### Run tests
+- To run the app in your terminal run this command:
+  `rails s`
 
-### Deployment
+- To run test first make sure the data is in the db: 
+  `bundle exec rake db:drop RAILS_ENV=test`
+  `bundle exec rake db:create RAILS_ENV=test`
+  `bundle exec rake db:schema:load RAILS_ENV=test`
 
-
-
+- If your sure you have the data in the db, you can run the test:
+  `bundle exec rspec || rspec`
 ## Authors
 
 👨‍💻 **Tiago Rahal Aires**
