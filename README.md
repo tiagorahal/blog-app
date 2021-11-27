@@ -5,26 +5,13 @@
 > In this project, i create all controllers and views for your Blog app and add simple placeholders for your views with plain HTML.
 
 
-## Built With
+**This is an example of how you may give instructions on setting up your project locally.**
+**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
 
-- Ruby
-- Ruby on Rails
-- SQL
-- VScode
-- Git & GitHub
 
-## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-- Open your command line
-
-- Go to the directory where you want this project to be cloned into
-
-- Run this command:
-  `git clone https://github.com/tiagorahal/blog-app`
-
-- cd into the directory
 
 - To run the app in your terminal run this command:
   `rails s`
