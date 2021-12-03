@@ -30,7 +30,7 @@ To get a local copy up and running follow these simple example steps.
 
 - Go to the  directory in your computer that you want to copy this project
 - Use the following code to copy the project files:
-`git clone https://github.com/jmontanholi/blog-app-rails.git`
+`git clone https://github.com/tiagorahal/blog-app.git`
 - CD into the cloned directory
 - Run `bundle install`
 - Run `rails s`
@@ -46,7 +46,6 @@ To get a local copy up and running follow these simple example steps.
 - GitHub: [@tiagorahal](https://github.com/tiagorahal)
 - Twitter: [@RahalAires](https://twitter.com/RahalAires)
 - LinkedIn: [Tiago Rahal Aires](https://linkedin.com/tiagorahal)
-
 
 ## 🤝 Contributing
 
