@@ -1,3 +1,19 @@
-<h1>
-  This is a User particular post
-</h1>
+<div class="post_index_main_div">
+  <div class="post_index_li">
+    <h3><%= @post.title %> by <%= @user.name.capitalize %></h3>
+    <p><%= @post.text %></p>
+    <div class="post_index_li_counters">
+      <p class="post_index_li_comments">Comments: <span><%= @post.comments_counter %></span></p>  
+      <p class="post_index_li_likes">Likes: <span><%= @post.likes_counter %></span></p>
+    </div>
+  </div>
+  <div>
+    <ul>
+      <li class="post_index_comment">
+        <% @post.comments.each do |comment| %>
+          <p><%= comment.user.name.capitalize %>: <%= comment.text %></p>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

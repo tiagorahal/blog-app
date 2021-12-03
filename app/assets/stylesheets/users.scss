@@ -1,3 +1,74 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.user_index_main_div {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.user_index_li {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0 2rem 0;
+}
+
+.user_index_li_img {
+  border: 1px solid black;
+  width: 150px;
+  height: 140px;
+  margin-right: 3rem;
+  border-radius: 10px;
+}
+
+.user_index_li_name {
+  display: flex;
+  justify-content: space-between;
+  width: 25rem;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 10px;
+
+  h3 {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  p {
+    align-self: flex-end;
+    padding: 0;
+    margin: 0;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.profile_bio {
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-bottom: 2rem;
+
+  h3 {
+    margin: 1rem 0 0 1rem;
+  }
+
+  p {
+    align-self: center;
+  }
+}
