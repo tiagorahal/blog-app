@@ -34,6 +34,7 @@ To get a local copy up and running follow these simple example steps.
 - Run `bundle install`
 - Run `rails s`
 
+
 ### Run tests
 
 - To run the tests simply run `bundle exec rspec`
