@@ -3,7 +3,11 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
+<<<<<<< HEAD
     @posts = @user.posts.includes(:comments)
+=======
+    @posts_list = @user.recent_posts
+>>>>>>> d1e3747a0516858e8857cb99d26adfeb8218ac8d
   end
 
   def show

@@ -38,6 +38,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
+<<<<<<< HEAD
+=======
+  gem 'populator'
+>>>>>>> d1e3747a0516858e8857cb99d26adfeb8218ac8d
   gem 'rspec-rails'
 end
 

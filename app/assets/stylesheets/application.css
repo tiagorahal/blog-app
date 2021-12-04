@@ -58,18 +58,27 @@ form {
   border: none;
 }
 
+<<<<<<< HEAD
 .hello_error,
 .comment_flash_error {
+=======
+.hello_error {
+>>>>>>> d1e3747a0516858e8857cb99d26adfeb8218ac8d
   margin: 2rem auto;
   text-align: center;
   color: red;
 }
 
+<<<<<<< HEAD
 .flash_success,
 .comment_flash {
   color: green;
   margin: 1rem auto 0 auto;
   font-size: 3rem;
+=======
+.flash_success {
+  color: green;
+>>>>>>> d1e3747a0516858e8857cb99d26adfeb8218ac8d
 }
 
 .title_field,

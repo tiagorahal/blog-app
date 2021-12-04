@@ -7,7 +7,12 @@ RSpec.describe 'Posts', type: :request do
   end
 
   describe 'GET /index' do
+<<<<<<< HEAD
     before(:each) { get user_posts_path(@user, @post) }
+=======
+    # pending "add some examples (or delete) #{__FILE__}"
+    before(:each) { get '/users/:user_id/posts' } # get(:index)
+>>>>>>> d1e3747a0516858e8857cb99d26adfeb8218ac8d
 
     it 'is a success' do
       expect(response).to have_http_status(:ok)
@@ -18,7 +23,11 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'body includes correct plaaceholder text' do
+<<<<<<< HEAD
       expect(response.body).to include('<title>Blog</title>')
+=======
+      expect(response.body).to include('<h1>Posts#index</h1>')
+>>>>>>> d1e3747a0516858e8857cb99d26adfeb8218ac8d
     end
   end
 end

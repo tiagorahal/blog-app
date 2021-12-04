@@ -25,7 +25,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-  - Read about [RoR](https://guides.rubyonrails.org/getting_started.html) before start.
+- Read about [RoR](https://guides.rubyonrails.org/getting_started.html) before start.
 
 - Go to the  directory in your computer that you want to copy this project
 - Use the following code to copy the project files:
