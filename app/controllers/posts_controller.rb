@@ -1,31 +1,27 @@
 class PostsController < ApplicationController
   def index
-    user = User.find_by(id: params[:user])
-    @user = user
-    @posts = user.posts.includes(comments: [:user])
+    @user = User.find(params[:user_id])
+    @posts = @user.posts
   end
 
   def show
-    @user = User.find_by(id: params[:user])
-    @post = Post.find_by(id: params[:id])
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:id])
   end
 
   def new
-    redirect_to '/sessions/new' unless session[:user_id]
+    @user = current_user
   end
 
   def create
-    post = Post.new(
-      title: params[:title],
-      text: params[:text],
-      comments_counter: 0,
-      likes_counter: 0,
-      user_id: session[:user_id]
-    )
-
-    return unless post.save
-
-    flash[:notice] = 'Post successfully created'
-    redirect_to "/users/#{session[:user_id]}/posts"
+    @post = current_user.posts.new(params.require(:post).permit(:title, :text))
+    @post.comments_counter = 0
+    @post.likes_counter = 0
+    flash[:notice] = if @post.save
+                       'Post created'
+                     else
+                       'Post not created'
+                     end
+    redirect_to user_post_path(current_user, @post)
   end
 end

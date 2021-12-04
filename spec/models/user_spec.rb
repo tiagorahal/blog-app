@@ -2,55 +2,28 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before(:each) do
-    @user = User.new(id: 1, name: 'Pedrinho', photo: 'none', bio: 'something on the bio', posts_counter: 0)
-  end
-
-  it 'Validates name presence' do
-    @user.name = nil
-    expect(@user).not_to be_valid
-  end
-
-  it 'Validates photo presence' do
-    @user.photo = nil
-    expect(@user).not_to be_valid
-  end
-
-  it 'Validates name length' do
-    @user.name = 'Mi'
-    expect(@user).not_to be_valid
-  end
-
-  it 'Validates photo length' do
-    @user.photo = 'Mi'
-    expect(@user).not_to be_valid
-  end
-
-  it 'Validates bio length' do
-    @user.bio = 'Mi'
-    expect(@user).not_to be_valid
-  end
-
-  it 'Validates posts_counter value' do
-    @user.posts_counter = -2
-    expect(@user).not_to be_valid
-  end
-
-  it 'Returns the last three posts for that user' do
+    @user = User.new(name: 'Guy', photo: 'photo',
+                     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus eros euismod,
+       ullamcorper magna vel, pellentesque metus. Sed id cursus lorem.',
+                     post_counter: 0)
     @user.save
-    x = 0
-    until x == 3
-      User.find_by(id: 1).posts.create(
-        title: "This is the #{x} post",
-        text: "This is the #{x} post text",
-        comments_counter: 0,
-        likes_counter: 0
-      )
-      x += 1
-    end
+    @post = Post.create(author_id: @user.id, title: 'Title 1',
+                        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus eros euismod,
+                         ullamcorper magna vel, pellentesque metus. Sed id cursus lorem.',
+                        comments_counter: 6, likes_counter: 1)
+  end
 
-    array = []
-    @user.show_recent.each { |post| array.push(post) }
+  it 'name is nil' do
+    @user.name = nil
+    expect(@user).to_not be_valid
+  end
 
-    expect(array.length).to be 3
+  it 'posts_counter should be greater than zero' do
+    expect(@user).to be_valid
+  end
+
+  it 'returns_five_most_recent_comments method should return 1 post' do
+    posts = @user.return_recent_post
+    expect(posts.length).to be(1)
   end
 end

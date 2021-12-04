@@ -1,15 +1,13 @@
 class LikesController < ApplicationController
   def create
-    @post = Post.find_by(id: params[:id])
-    if already_liked?
-      flash[:alert] = 'Already liked'
+    user = User.find(params[:user_id])
+    post = user.posts.find(params[:id])
+    Like.create(author_id: current_user.id, post_id: post.id)
+    if Like.exists?(author_id: current_user.id)
+      flash[:notice] = 'Post liked'
     else
-      @post.likes.create(user_id: session[:user_id])
+      flash[:error] = 'Post cannot be like'
     end
-    redirect_back(fallback_location: root_path)
-  end
-
-  def already_liked?
-    Like.where(user_id: session[:user_id], post_id: params[:id]).exists?
+    redirect_to user_post_path(user, post)
   end
 end

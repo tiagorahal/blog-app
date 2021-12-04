@@ -9,21 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-    <% flash.each do |type, msg| %>
-      <div>
-        <%= msg %>
-      </div>
-    <% end %>
-    <% if session[:user_id] %>
-      <h1>User: <%= User.find_by(id: session[:user_id]).name %></h1>
-      <%= link_to 'Log out', '/sessions/logout' %>
-      <%= link_to 'Create a post', "/posts/new" %>
-    <% else %>
-      <%= link_to 'Login', '/sessions/new' %>
-      <%= link_to 'SignUp', '/users/new' %>
-    <% end %>
+  <body>  
     <%= yield %>
   </body>
 </html>

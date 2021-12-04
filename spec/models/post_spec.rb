@@ -1,50 +1,49 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  before(:each) do
-    User.create(id: 1, name: 'Peter', photo: 'none', bio: 'something on the bio', posts_counter: 0)
-    @post = Post.new(id: 1, title: 'some title', text: 'some text', comments_counter: 0, likes_counter: 0, user_id: 1)
-  end
-
-  it 'Validates title' do
-    @post.title = nil
-    expect(@post).not_to be_valid
-  end
-
-  it 'Validates text' do
-    @post.text = nil
-    expect(@post).not_to be_valid
-  end
-
-  it 'Validates comments_counter' do
-    @post.comments_counter = nil
-    expect(@post).not_to be_valid
-  end
-
-  it 'Validates likes_counter' do
-    @post.likes_counter = nil
-    expect(@post).not_to be_valid
-  end
-
-  it 'Validates text length' do
-    @post.text = 'a' * 255
-    expect(@post).not_to be_valid
-  end
-
-  it 'Gets a post last 5 comments' do
+  before :each do
+    @user = User.create(name: 'Gabriel',
+                        photo: 'linktophoto',
+                        bio: "ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja
+                        ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja
+                        ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja",
+                        post_counter: 0)
+    @post = Post.new(title: 'title', text: 'text', author_id: @user.id, comments_counter: 0, likes_counter: 0)
     @post.save
-    x = 0
-    until x == 5
-      Post.find_by(id: 1).comments.create(
-        text: "This is the #{x} post comment",
-        user_id: 1
-      )
-      x += 1
-    end
-    array = []
+  end
 
-    @post.show_recent.each { |comment| array.push(comment) }
+  it 'should be invalid with no title' do
+    @post.title = nil
+    expect(@post).to_not be_valid
+  end
 
-    expect(array.length).to be 5
+  it 'should be invalid with long title' do
+    @post.title = "ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja
+                  ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja
+                  ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja
+                  ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja
+                  ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja
+                  ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja"
+    expect(@post).to_not be_valid
+  end
+
+  it 'should be invalid with no counter' do
+    @post.comments_counter = nil
+    expect(@post).to_not be_valid
+  end
+
+  it 'should be invalid with negative values' do
+    @post.comments_counter = -10
+    expect(@post).to_not be_valid
+  end
+
+  it 'should be invalid with no likes counter' do
+    @post.likes_counter = nil
+    expect(@post).to_not be_valid
+  end
+
+  it 'should be invalid with negative values' do
+    @post.likes_counter = -20
+    expect(@post).to_not be_valid
   end
 end
