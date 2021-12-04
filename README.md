@@ -11,7 +11,6 @@ This project is meant to be a full blog app and it's goal is to teach students a
 **This is an example of how you may give instructions on setting up your project locally.**
 **Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
 
-
 To get a local copy up and running follow these simple example steps.
 
 ## Built With
@@ -30,10 +29,11 @@ To get a local copy up and running follow these simple example steps.
 
 - Go to the  directory in your computer that you want to copy this project
 - Use the following code to copy the project files:
-`git clone https://github.com/jmontanholi/blog-app-rails.git`
+`git clone https://github.com/tiagorahal/blog-app.git`
 - CD into the cloned directory
 - Run `bundle install`
 - Run `rails s`
+
 
 ### Run tests
 
@@ -46,7 +46,6 @@ To get a local copy up and running follow these simple example steps.
 - GitHub: [@tiagorahal](https://github.com/tiagorahal)
 - Twitter: [@RahalAires](https://twitter.com/RahalAires)
 - LinkedIn: [Tiago Rahal Aires](https://linkedin.com/tiagorahal)
-
 
 ## 🤝 Contributing
 
