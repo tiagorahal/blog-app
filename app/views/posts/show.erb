@@ -6,6 +6,7 @@
       <p class="post_index_li_comments">Comments: <span><%= @post.comments_counter %></span></p>  
       <p class="post_index_li_likes">Likes: <span><%= @post.likes_counter %></span></p>
     </div>
+    <%= button_to 'Like', "/users/#{params[:user]}/posts/#{params[:id]}/create_like", method: :post %>
   </div>
   <div>
     <ul>
@@ -15,5 +16,12 @@
         <% end %>
       </li>
     </ul>
+    <%= form_with model: @comment do |form| %>
+      <div class="new_comment">
+        <%= form.label :text, 'New Comment:' %>
+        <%= form.text_area :text, size: '15x5' %>
+      </div>
+      <%= form.submit %>
+    <% end %>
   </div>
 </div>

@@ -1,77 +1,74 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-@import "font-awesome";
 
-* {
+.user_index_main_div {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  min-height: 100vh;
-}
-
-#users_section,
-#current_user {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.users {
-  display: flex;
-  flex-direction: row;
-  margin: 0.5rem;
-  align-items: center;
-  min-width: 40rem;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-.user h2 {
-  margin: 1rem;
-}
-
-.users_pic,
-.user_pic {
-  border: 1px solid gray;
-  width: 5rem;
-  height: 5rem;
-}
-
-.users_name {
+.user_index_li {
   display: flex;
   align-items: center;
+  margin: 2rem 0 2rem 0;
+}
+
+.user_index_li_img {
+  border: 1px solid black;
+  width: 150px;
+  height: 140px;
+  margin-right: 3rem;
+  border-radius: 10px;
+}
+
+.user_index_li_name {
+  display: flex;
   justify-content: space-between;
-  border: 1px solid gray;
-  margin: 0 0 0 1rem;
+  width: 25rem;
+  border: 1px solid black;
   padding: 1rem;
-  min-width: 30rem;
+  border-radius: 10px;
+
+  h3 {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  p {
+    align-self: flex-end;
+    padding: 0;
+    margin: 0;
+
+    span {
+      font-weight: bold;
+    }
+  }
 }
 
-.users_name p {
-  position: relative;
-  top: 1rem;
-}
+.profile_bio {
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-bottom: 2rem;
 
-.bio {
-  margin: 1rem;
-  max-width: 40rem;
-  border: 1px solid gray;
-  padding: 0.3rem;
-}
+  h3 {
+    margin: 1rem 0 0 1rem;
+  }
 
-.post {
-  max-width: 40rem;
-  border: 1px solid gray;
-  padding: 0.3rem;
-  margin: 0 0 1rem 0;
-}
-
-.posts {
-  min-width: 40rem;
+  p {
+    align-self: center;
+  }
 }
