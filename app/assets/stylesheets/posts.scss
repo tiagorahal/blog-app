@@ -1,67 +1,94 @@
-// Place all the styles related to the Posts controller here.
+// Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.post_index_main_div {
+* {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+#user_posts {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
-.post_index_li {
+.see_posts_user {
   width: 40rem;
-  height: 7rem;
-  border: 1px solid black;
-  border-radius: 10px;
+}
+
+.posts_with_comments {
+  margin: 0 0 3rem 0;
+}
+
+.text {
+  border: 1px solid gray;
+  padding: 0.3rem;
+}
+
+.text .comments_likes {
+  display: flex;
+  justify-content: end;
+  margin: 1rem;
+}
+
+.comments {
+  border: 1px solid gray;
+  margin: 0.3rem 0 0 0;
+  padding: 0.3rem;
+}
+
+#user_post {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
-
-  h3 {
-    align-self: flex-start;
-    padding: 0;
-    margin: 0.5rem 0 0 1rem;
-  }
-
-  p {
-    padding: 0;
-    align-self: start;
-    margin: 1rem 0 0 2.5rem;
-  }
+  margin: 2rem auto 0;
+  width: 50rem;
 }
 
-.post_index_li_counters {
-  margin: 0 2rem 0 0;
-  padding: 0;
+#user_post h2 {
+  margin: 2rem 0 0 0;
+  text-align: center;
+}
+
+.content {
+  border: 1px solid gray;
+  padding: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.users_comments {
+  border: 1px solid gray;
+  padding: 0.3rem;
+}
+
+.comments_and_likes {
   display: flex;
-  align-self: flex-end;
+  justify-content: end;
 }
 
-.post_index_li_comments {
-  span {
-    font-weight: bold;
-  }
+.thumbs_up {
+  margin: 0 0.5rem;
 }
 
-.post_index_li_likes {
-  span {
-    font-weight: bold;
-  }
+.top {
+  display: flex;
+  justify-content: space-between;
 }
 
-.post_index_comment {
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 40rem;
-  height: 5rem;
-  margin-top: 0.2rem;
+#add_new_post {
+  font-size: 1.6rem;
+  margin: 1rem 0 1rem 0;
+}
 
-  p {
-    margin-left: 0.5rem;
-    font-weight: bold;
-  }
+.fa-thumbs-up:hover {
+  transform: scale(1.2);
 }
