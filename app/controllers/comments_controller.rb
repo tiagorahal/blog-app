@@ -1,14 +1,20 @@
 class CommentsController < ApplicationController
+  before_action :current_user, only: [:create]
+
   def create
-    comment = Comment.new(
-      text: params[:text],
-      user_id: session[:user_id],
-      post_id: params[:id]
-    )
+    @comment = @current_user.comments.new(comments_params)
+    @comment.user_id = @current_user.id
+    @comment.post_id = params[:post_id]
 
-    return unless comment.save
+    if @comment.save
+      @comment.update_comments_counter
+      redirect_to user_post_path(@current_user.id, Post.find(params[:post_id]))
+    else
+      render :new
+    end
+  end
 
-    flash.now[:notice] = 'Comment successfully saved'
-    redirect_back(fallback_location: root_path)
+  def comments_params
+    params.require(:comment).permit(:text)
   end
 end
