@@ -3,15 +3,15 @@ default: &default
    encoding: unicode
    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
  
- development:
+development:
    <<: *default
    database: Blog_App_Rails_development
  
- test:
+test:
    <<: *default
    database: Blog_App_Rails_test
  
- production:
+production:
    <<: *default
    database: BlogAppRails_production
    password: <%= ENV['BLOGAPPRAILS_DATABASE_PASSWORD'] %>
