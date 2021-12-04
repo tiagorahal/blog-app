@@ -1,36 +1,38 @@
-<div id='user_posts'>
-  <%= render 'posts/the_user' %>
-
-  <div id='add_new_post'>
-    <%= link_to 'Add new post', "/posts/new"%>
-  </div>
-
-  <div class='flash_success'>
-    <%= flash[:success] %>
-  </div>
-
-  <div class='see_posts_user'>
-    <% @posts_list.each do |post| %>
-    <div class='posts_with_comments'>
-      <div class='text'>
-        <%= link_to "/users/#{@user.id}/posts/#{post.id}", :action => 'go' do %>
-          <h3>Post # <%= post.id %></h3>
-        <%end%>
-        <p> Text: <%= post.text %></p>
-        <div class='comments_likes'>
-          Comments: <%= post.comments_count %>
-          Likes: <%= post.likes_count %>
-        </div>
-      </div>
-
-      <div class='comments'>
-        <div>
-          <% post.recent_comments.each do |comment| %>
-            <p>Username: <%= comment.text %></p>
-          <%end%>
-        </div>
-      </div>
+<div class="user_profile">
+    <div class="photo_container">
+        <%= image_tag 'user-avatar.png',
+            alt: 'user',
+            class: 'photo' %>
     </div>
-    <%end%>
-  </div>
+    <div class="info_container">        
+        <p class="name_container"><%= @user.name%></p>  
+        <p class="posts_counter">Numer of posts: <%= @user.post_counter %></p>           
+    </div>    
 </div>
+<div class="bio_cnt">
+    <h2 class="bio_title">Bio</h2>
+    <p><%= @user.bio%></p>
+</div>
+<ul class="posts_container">
+<% @posts.includes([:comments]).each do |post| %> 
+    <%= link_to :action => 'show', :id => post.id do %>
+        <li class="post_list">
+            <h2 class="bio_title"><%= post.title %></h2>
+            <p><%= post.text %></p>
+            <div class="counter_container">
+                <p>Comments: <%= post.comments_counter %></p>
+                <p>Likes: <%= post.likes_counter %></p>
+            </div>
+            <div class="comments_container">
+                <ul> 
+                <h2 class="bio_title">Comments: </h2>
+                    <% post.returns_five_most_recent_comments.each do |c| %>
+                    <li><p><%= c.text %></p></li>
+                     <% end %>
+                </ul>
+            </div>         
+        </li>
+    <% end %>         
+<% end %> 
+</ul>
+<%= button_to "Go back", user_path(@user.id), :method => :get, class:"button" %>

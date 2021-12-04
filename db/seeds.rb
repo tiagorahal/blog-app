@@ -6,51 +6,57 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# <--------------- Create Users --------------->
-5.times do
-  User.create(name: Faker::Name.name, photo: Faker::File.file_name(dir: 'path/to'), bio: Faker::Lorem.paragraphs)
+require 'faker'
+
+(1..20).each do |id|
+  User.create!(
+      id: id, 
+      name: Faker::Name.name,
+      photo: Faker::Lorem.sentence,
+      bio: Faker::Lorem.paragraph(sentence_count: 15, supplemental: true),
+      post_counter: 0,
+  )
 end
 
-# <------------------- Posts for User 1 ------------>
-5.times do
-  Post.create(user_id: 1, title: Faker::Book.title, text: Faker::Quote.matz)
+(1..100).each do |id|
+  Post.create!(
+      id: id,
+      author_id: rand(1..20),
+      title: Faker::Book.title,
+      text: Faker::Lorem.paragraph(sentence_count: 5, supplemental: true),
+      comments_counter: 0,
+      likes_counter: 0,
+  )
 end
 
-# <------------------- Posts for User 2 ------------>
-5.times do
-  Post.create(user_id: 2, title: Faker::Book.title, text: Faker::Quote.matz)
+(1..100).each do |id|
+  Comment.create!(
+      id: id,
+      post_id: rand(1..100),
+      author_id: rand(1..20),
+      text: Faker::Lorem.paragraph,
+  )
 end
 
-# <------------------- Comments and likes for User 1 ------------>
-5.times do
-  Comment.create(user_id: 1, post_id: 5, text: Faker::Lorem.question)
+(1..100).each do |id|
+  Like.create!(
+      id: id,
+      author_id: rand(1..20),
+      post_id: rand(1..100),
+  )
 end
 
-5.times do
-  Like.create(user_id: 1, post_id: 5)
+User.all.each do |u|
+  u.post_counter = u.posts.count
+  u.save
 end
 
-5.times do
-  Comment.create(user_id: 1, post_id: 4, text: Faker::Lorem.question)
+Post.all.each do |p|
+  p.comments_counter = p.comments.count
+  p.likes_counter = p.likes.count
+  p.save
 end
 
-5.times do
-  Like.create(user_id: 1, post_id: 4)
-end
-
-# <------------------- Comments and likes for User 2 ------------>
-5.times do
-  Comment.create(user_id: 2, post_id: 10, text: Faker::Lorem.question)
-end
-
-5.times do
-  Like.create(user_id: 2, post_id: 10)
-end
-
-5.times do
-  Comment.create(user_id: 2, post_id: 9, text: Faker::Lorem.question)
-end
-
-5.times do
-  Like.create(user_id: 2, post_id: 9)
+ActiveRecord::Base.connection.tables.each do |t|
+ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
