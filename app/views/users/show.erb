@@ -1,0 +1,15 @@
+<div class="user_index_main_div">
+  <%= render @user %>
+  <div class="profile_bio">
+    <h3>Bio</h3>
+    <p><%= @user.bio %></p>
+  </div>
+  <div>
+    <ul>
+      <% @posts.each do |post| %>
+        <%= render post %>
+      <%end%>
+    </ul>
+  </div>
+  <%= link_to 'See all posts', "/users/#{@user.id}/posts" %>
+</div>

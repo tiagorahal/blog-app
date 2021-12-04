@@ -1,38 +1,31 @@
 class PostsController < ApplicationController
-  before_action :current_user, only: [:create]
-
   def index
-    @user = User.find(params[:user_id])
-    @posts = @user.posts.includes(:comments)
+    user = User.find_by(id: params[:user])
+    @user = user
+    @posts = user.posts.includes(comments: [:user])
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @post = Post.find(params[:id])
-    @comment = Comment.new
+    @user = User.find_by(id: params[:user])
+    @post = Post.find_by(id: params[:id])
   end
 
   def new
-    @post = Post.new
+    redirect_to '/sessions/new' unless session[:user_id]
   end
 
   def create
-    @post = @current_user.posts.new(post_params)
+    post = Post.new(
+      title: params[:title],
+      text: params[:text],
+      comments_counter: 0,
+      likes_counter: 0,
+      user_id: session[:user_id]
+    )
 
-    respond_to do |format|
-      if @post.save
-        flash[:success] = 'Post saved successfully'
-        format.html { redirect_to "/users/#{@current_user.id}/posts" }
-      else
-        flash.now[:error] = 'Error: Post could not be saved'
-        format.html { render :new }
-      end
-    end
-  end
+    return unless post.save
 
-  private
-
-  def post_params
-    params.require(:post).permit(:title, :text)
+    flash[:notice] = 'Post successfully created'
+    redirect_to "/users/#{session[:user_id]}/posts"
   end
 end

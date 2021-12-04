@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog</title>
+    <title>BlogAppRails</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,19 @@
   </head>
 
   <body>
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
+    <% if session[:user_id] %>
+      <h1>User: <%= User.find_by(id: session[:user_id]).name %></h1>
+      <%= link_to 'Log out', '/sessions/logout' %>
+      <%= link_to 'Create a post', "/posts/new" %>
+    <% else %>
+      <%= link_to 'Login', '/sessions/new' %>
+      <%= link_to 'SignUp', '/users/new' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
