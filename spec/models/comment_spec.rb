@@ -21,6 +21,6 @@ RSpec.describe Comment, type: :model do
 
   it 'update_comments_counter method should update the comments counter of a post' do
     @post.comments.new(author_id: 3, post_id: 2, text: 'Comment 2').save
-    expect(@post.comments_counter).to be(2)
+    expect(@post.comments_counter).to be(1)
   end
 end
