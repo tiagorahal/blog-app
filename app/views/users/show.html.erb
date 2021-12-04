@@ -1,2 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div id='current_user'>
+  <%= render 'users/the_user'%>
+
+  <div class='bio'>
+    Bio: <p><%= @user.bio %></p>
+  </div>
+
+  <%= render 'users/list_post' %>
+
+  <div class="btn-container">
+    <%= link_to "See all posts", "#{@user.id}/posts", class: "button" %>
+  </div>
+</div>
