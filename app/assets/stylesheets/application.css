@@ -247,3 +247,18 @@ input[type="submit"] {
   25% { opacity: 0.25; }
   0% { opacity: 0; }
 }
+
+.login_form,
+.sign_in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.field_1,
+.actions {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 30rem;
+}
