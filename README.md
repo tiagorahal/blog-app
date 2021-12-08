@@ -30,6 +30,9 @@ To get a local copy up and running follow these simple example steps.
 `git clone https://github.com/tiagorahal/blog-app.git`
 - CD into the cloned directory
 - Run `bundle install`
+- Run `npm i`
+- Run `rails db;create`
+- Run `rails db:migrate`
 - Run `rails s`
 
 ### Run tests
