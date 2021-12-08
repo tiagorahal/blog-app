@@ -1,4 +1,4 @@
-* {
+/* * {
   list-style: none;
   margin: 0;
   background-color: #272a31;
@@ -30,11 +30,11 @@ li,
 div,
 p {
   background-color: var(--ctn_backgrond);
-}
+} */
 
 /* USER INDEX PAGE */
 
-.user_container {
+/* .user_container {
   margin: 0 auto;
   width: 70%;
 }
@@ -81,11 +81,11 @@ p {
   display: flex;
   justify-content: right;
   height: 20%;
-}
+} */
 
 /* USER SHOW */
 
-.user_profile {
+/* .user_profile {
   display: flex;
   align-items: center;
   border: 2px solid black;
@@ -153,11 +153,11 @@ p {
 
 .post_tile {
   font-weight: bold;
-}
+} */
 
 /* INDEX POST */
 
-.comments_container {
+/* .comments_container {
   width: 90%;
   border-radius: 25px;
   margin: 1vh auto 4vh auto;
@@ -177,11 +177,11 @@ p {
 
 .comments_container > ul {
   background-color: var(--ctn_backgrond);
-}
+} */
 
 /* Form */
 
-form {
+/* form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -228,7 +228,7 @@ input[type="submit"] {
 
 ::placeholder {
   color: #ccc;
-}
+} */
 
 /* FLASH */
 
