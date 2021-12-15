@@ -17,7 +17,6 @@ To get a local copy up and running follow these simple example steps.
 - Rubocop
 - Gemfile
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
